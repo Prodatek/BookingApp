@@ -36,7 +36,7 @@ func main() {
 	greetUsers()
 
 	for {
-		firstName, lastName, email, userTickets := userInput(firstName, lastName, email, userTickets)
+		firstName, lastName, email, userTickets := userInput()
 		isvalidName, isvalidEmail, isvalidTickets := validateData(firstName, lastName, email, userTickets, registerCount)
 
 		// only call array lists after they have been declared
@@ -69,6 +69,7 @@ func main() {
 			firstNames := getfirstName(bookin)
 
 			fmt.Printf("the first names of bookers are: %v\n", firstNames)
+
 			var noMoreTickets bool = registerCount == 0
 			if noMoreTickets {
 
@@ -112,7 +113,7 @@ func getfirstName(bookin []map[string]string) []string {
 	for _, booking := range bookin {
 		if firstName, exists := booking["firstname"]; exists {
             firstNames = append(firstNames, firstName)
-		// firstNames = append(firstNames, userData["firstname"])
+	
 	}
 }
 	return firstNames

@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func userInput(firstName string, lastName string, email string, userTickets uint) (string, string, string, uint) {
+func userInput() (string, string, string, uint) {
 	fmt.Println("Please enter your first name")
 	fmt.Scan(&firstName)
 	fmt.Println("Please enter your last name")
