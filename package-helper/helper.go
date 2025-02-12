@@ -1,16 +1,22 @@
-package helped
+package booker
 
 import "fmt"
 
-func userInput(firstName string, lastName string, email string, userTickets uint) (string, string, string, uint) {
-	fmt.Println("Please enter your first name")
-	fmt.Scan(&firstName)
-	fmt.Println("Please enter your last name")
-	fmt.Scan(&lastName)
-	fmt.Println("Please enter your email")
-	fmt.Scan(&email)
-	fmt.Println("Please enter the number of tickets you want to book")
-	fmt.Scan(&userTickets)
+func bookTickets(firstNames []string) {
+	registerCount = registerCount - userTickets
+	bookings[0] = firstName + " " + lastName + " " + email
+	bookin = append(bookin, userData)
 
-	return firstName, lastName, email, userTickets
+	fmt.Printf("%v Event has been fully booked\n", websiteName)
+
+	fmt.Printf("Thank you for registering %v you have successfully booked %v tickets \nYou will receive an email @ %v", firstName, userTickets, email)
+	fmt.Printf("\n%v tickets remaining for %v event\n", registerCount, websiteName)
+
+	// fmt.Printf("\nContent of the slice %v\n", bookin)
+	// fmt.Printf("%v\n", bookin[0])
+	// fmt.Printf("the content of the array: %v\n", bookings)
+
+	fmt.Printf("the slice type: %T\n", bookin)
+	fmt.Printf("the number of bookers in slice : %v\n", len(bookin))
+
 }
