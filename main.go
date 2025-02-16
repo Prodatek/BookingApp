@@ -73,23 +73,9 @@ func main() {
 			}
 
 			bookin = append(bookin, userData)
-			fmt.Printf("the list of bookings are %v \n", bookin)
 
-			// fmt.Printf("%v Event has been fully booked\n", websiteName)
-
-			fmt.Printf("Thank you for registering %v you have successfully booked %v tickets \nYou will receive an email @ %v", firstName, userTickets, email)
-			fmt.Printf("\n%v tickets remaining for %v event\n", registerCount, websiteName)
-
-			// fmt.Printf("\nContent of the slice %v\n", bookin)
-			// fmt.Printf("%v\n", bookin[0])
-			// fmt.Printf("the content of the array: %v\n", bookings)
-
-			fmt.Printf("The slice type: %T\n", bookin)
-			fmt.Printf("the number of bookers in slice : %v\n", len(bookin))
-
-			firstNames := getfirstName(bookin)
-
-			fmt.Printf("the first names of bookers are: %v\n", firstNames)
+			bookTicket(firstName, userTickets, email, registerCount,websiteName, bookin)
+			
 
 			// wg.Add(1)
 
@@ -140,6 +126,28 @@ func getfirstName(bookin []UserData) []string {
 	}
 	return firstNames
 }
+
+
+func bookTicket(firstName string, userTIckets uint, email string, registerCount uint, websiteName string, bookin []UserData){
+	fmt.Printf("the list of bookings are %v \n", bookin)
+
+	// fmt.Printf("%v Event has been fully booked\n", websiteName)
+
+	fmt.Printf("Thank you for registering %v you have successfully booked %v tickets \nYou will receive an email @ %v", firstName, userTickets, email)
+	fmt.Printf("\n%v tickets remaining for %v event\n", registerCount, websiteName)
+
+	// fmt.Printf("\nContent of the slice %v\n", bookin)
+	// fmt.Printf("%v\n", bookin[0])
+	// fmt.Printf("the content of the array: %v\n", bookings)
+
+	fmt.Printf("The slice type: %T\n", bookin)
+	fmt.Printf("the number of bookers in slice : %v\n", len(bookin))
+
+	firstNames := getfirstName(bookin)
+
+	fmt.Printf("the first names of bookers are: %v\n", firstNames)
+}
+
 
 func sendTicket(userTickets uint, firstName string, email string){
 	time.Sleep(5 * time.Second)
