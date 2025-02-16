@@ -4,6 +4,8 @@ import (
 	"fmt"
 	// "strconv"
 	"strings"
+	"time"
+	"sync"
 )
 
 // import "log"
@@ -38,6 +40,8 @@ type UserData struct{
 	email string
 	userTickets uint
 }
+
+var wg = sync.WaitGroup{}
 
 func main() {
 
@@ -87,6 +91,10 @@ func main() {
 
 			fmt.Printf("the first names of bookers are: %v\n", firstNames)
 
+			// wg.Add(1)
+
+			go sendTicket(userTickets, firstName, email)
+
 			var noMoreTickets bool = registerCount == 0
 			if noMoreTickets {
 
@@ -107,8 +115,8 @@ func main() {
 			}
 
 		}
-	}
-
+}
+		// wg.Wait()
 }
 func validateData(firstName string, lastName string, email string, userTickets uint, registerCount uint) (bool, bool, bool) {
 	isvalidName := len(firstName) >= 2 && len(lastName) >= 2
@@ -132,3 +140,16 @@ func getfirstName(bookin []UserData) []string {
 	}
 	return firstNames
 }
+
+func sendTicket(userTickets uint, firstName string, email string){
+	time.Sleep(5 * time.Second)
+	var ticket = fmt.Sprintf("\n%v successfully booked for %v", userTickets, firstName)
+	fmt.Println("*******************")
+	fmt.Printf("Sending Ticket:%v, \nSent ticket to %v\n", ticket, email)
+	fmt.Println("*******************")
+
+	// wg.Done()
+
+
+}
+
