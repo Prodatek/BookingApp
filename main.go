@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"strconv"
+	// "strconv"
 	"strings"
 )
 
@@ -25,11 +25,19 @@ var userTickets uint
 var bookings [50]string
 
 // Slice
-var bookin = make([]map[string]string, 0)
+var bookin = make([]UserData, 0)
 
 // var firstNames []string
 
-var userData = make(map[string]string)
+// var userData = make(map[string]string)
+
+// using a struct in place of maps
+type UserData struct{
+	firstName string
+	lastName string
+	email string
+	userTickets uint
+}
 
 func main() {
 
@@ -47,10 +55,18 @@ func main() {
 			bookings[0] = firstName + " " + lastName + " " + email
 
 			//map of strings
-			userData["firstname"] = firstName
-			userData["lastname"] = lastName
-			userData["email"] = email
-			userData["userticket"] = strconv.FormatUint(uint64(userTickets), 10)
+			// userData["firstname"] = firstName
+			// userData["lastname"] = lastName
+			// userData["email"] = email
+			// userData["userticket"] = strconv.FormatUint(uint64(userTickets), 10)
+
+			// Userdata structure
+			var userData = UserData {
+				firstName: firstName,
+				lastName: lastName,
+				email: email,
+				userTickets: userTickets,
+			}
 
 			bookin = append(bookin, userData)
 			fmt.Printf("the list of bookings are %v \n", bookin)
@@ -109,14 +125,10 @@ func greetUsers() {
 }
 
 
-func getfirstName(bookin []map[string]string) []string {
+func getfirstName(bookin []UserData) []string {
 	var firstNames []string
 	for _, booking := range bookin {
-		firstNames = append(firstNames, booking[firstName])
-	// 	if firstName, exists := booking["firstname"]; exists {
-    //         firstNames = append(firstNames, firstName)
-	
-	// }
-}
+		firstNames = append(firstNames, booking.firstName)
+	}
 	return firstNames
 }
