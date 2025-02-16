@@ -53,11 +53,12 @@ func main() {
 			userData["userticket"] = strconv.FormatUint(uint64(userTickets), 10)
 
 			bookin = append(bookin, userData)
+			fmt.Printf("the list of bookings are %v \n", bookin)
 
 			// fmt.Printf("%v Event has been fully booked\n", websiteName)
 
 			fmt.Printf("Thank you for registering %v you have successfully booked %v tickets \nYou will receive an email @ %v", firstName, userTickets, email)
-			fmt.Printf("\n%v tickets remaining for %v event\n ", registerCount, websiteName)
+			fmt.Printf("\n%v tickets remaining for %v event\n", registerCount, websiteName)
 
 			// fmt.Printf("\nContent of the slice %v\n", bookin)
 			// fmt.Printf("%v\n", bookin[0])
@@ -111,10 +112,11 @@ func greetUsers() {
 func getfirstName(bookin []map[string]string) []string {
 	var firstNames []string
 	for _, booking := range bookin {
-		if firstName, exists := booking["firstname"]; exists {
-            firstNames = append(firstNames, firstName)
+		firstNames = append(firstNames, booking[firstName])
+	// 	if firstName, exists := booking["firstname"]; exists {
+    //         firstNames = append(firstNames, firstName)
 	
-	}
+	// }
 }
 	return firstNames
 }
